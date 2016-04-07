@@ -17,7 +17,7 @@ namespace TestApp
     {
       return new List<Person>()
       {
-        new Person() { PersonID = 1, DateCreated = DateTime.Now, Name = "Bob", Surname = "The Builder" },
+        new Person() { PersonID = 1, DateCreated = DateTime.Now, Name = "", Surname = "The Builder" },
         new Person() { PersonID = 2, DateCreated = DateTime.Now, Name = "Rob", Surname = "The Robber" },
         new Person() { PersonID = 2, DateCreated = DateTime.Now, Name = "Gob", Surname = "The Gobbler" }
       };

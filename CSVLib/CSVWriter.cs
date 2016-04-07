@@ -16,7 +16,7 @@ namespace CSVLib
 
     private MemoryStream _csvBuffer { get; set; }
     private StreamWriter _csvWriter { get; set; }
-    private List<string> _fileHeaderList { get; set; }
+    private ICollection<string> _fileHeaderList { get; set; }
     private bool _isFirstColumn { get; set; }
 
     private string _dateTimeFormat = "ddd d MMM hh:mm:ss";
@@ -116,13 +116,14 @@ namespace CSVLib
 
         foreach (var row in rowList)
         {
+          ICollection<string> rowContent = new Collection<string>();
           foreach (PropertyInfo prop in propList)
           {
             //propVal is the value of the property in the variable row
             string propVal = GetValue(prop, row);
-            AppendColumn(propVal);
+            rowContent.Add(propVal);
           }
-          AppendLine();
+          AppendLine(rowContent);
         }
       }
     }
