@@ -20,7 +20,7 @@ namespace CSVLib
     private bool _isFirstColumn { get; set; }
 
     private string _dateTimeFormat = "ddd d MMM hh:mm:ss";
-    private string _emptyValueText = "NULL";
+    private string _nullValueText = "NULL";
     private string _separator = ",";
 
     private const string _ignoreAttributeValue = "csv-ignore-column";
@@ -51,6 +51,11 @@ namespace CSVLib
     public void SetDateTimeFormat(string dateTimeFormat = "ddd d MMM hh:mm:ss tt")
     {
       _dateTimeFormat = dateTimeFormat;
+    }
+
+    public void SetNullValueText(string nullValueText = "NULL")
+    {
+      _nullValueText = nullValueText;
     }
 
     #endregion
@@ -130,7 +135,7 @@ namespace CSVLib
 
     public string GetValue<T>(PropertyInfo prop, T row)
     {
-      string propVal = _emptyValueText;
+      string propVal = _nullValueText;
       object propObj = prop.GetValue(row);
       if (propObj != null)
       {
